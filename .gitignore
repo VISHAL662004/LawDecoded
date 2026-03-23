@@ -1,0 +1,92 @@
+# ================================
+# Python
+# ================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# ================================
+# VS Code / IDE
+# ================================
+.vscode/
+.idea/
+
+# ================================
+# Logs & temp files
+# ================================
+*.log
+*.tmp
+*.swp
+.DS_Store
+
+# ================================
+# Environment variables
+# ================================
+.env
+.env.*
+
+# ================================
+# Data (VERY IMPORTANT for your NLP project)
+# ================================
+data/
+legal-doc-ai/backend/data/
+*.csv
+*.json
+*.zip
+*.tar.gz
+
+# Specifically your dataset
+legal-doc-ai/backend/data/indian-supreme-court-judgments/
+
+# Processed data
+processed/
+
+# ================================
+# Models (large files)
+# ================================
+models/
+*.pt
+*.pth
+*.h5
+*.ckpt
+
+# Keep empty folders if needed
+!models/checkpoints/.gitkeep
+
+# ================================
+# Cache
+# ================================
+.cache/
+*.cache
+
+# ================================
+# Node (frontend)
+# ================================
+node_modules/
+package-lock.json
+
+# ================================
+# Misc project files (optional cleanup)
+# ================================
+terminal.txt
+new_terminal.txt
+difference.txt
+explaination.txt
+
+# ================================
+# Jupyter Notebook (if used)
+# ================================
+.ipynb_checkpoints/
+
+# ================================
+# OS files
+# ================================
+Thumbs.db
