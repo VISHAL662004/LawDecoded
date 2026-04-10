@@ -9,17 +9,31 @@ export default function PunishmentPanel({ result, onSelectSpan }: Props) {
   const items = result?.extraction.punishment_sentence || [];
 
   return (
-    <section className="glass-panel fade-in rounded-2xl p-5">
-      <div className="flex items-center justify-between">
-        <h2 className="panel-title">Punishment / Sentence</h2>
-        <span className="ribbon">Entity</span>
+    <section className="section-card fade-up stagger-1">
+      <div className="section-header">
+        <div className="panel-header-main">
+          <span className="panel-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M12 2v6" />
+              <path d="M6.2 6.2 10 10" />
+              <path d="M2 12h6" />
+              <path d="M6.2 17.8 10 14" />
+              <path d="M12 22v-6" />
+              <path d="m17.8 17.8-3.8-3.8" />
+              <path d="M22 12h-6" />
+              <path d="m17.8 6.2-3.8 3.8" />
+            </svg>
+          </span>
+          <h2 className="panel-title">Punishment / Sentence</h2>
+        </div>
+        <span className="badge-gold">Critical</span>
       </div>
       <div className="mt-3 space-y-2">
         {items.map((item, idx) => (
           <button
             key={idx}
             onClick={() => onSelectSpan(item)}
-            className="block w-full rounded-xl border border-amber-900/20 bg-white/80 p-3 text-left text-sm text-slate-700 transition hover:border-amber-700/40 hover:bg-amber-50"
+            className="interactive-row"
           >
             {item.value}
           </button>

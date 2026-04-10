@@ -50,3 +50,23 @@ export type JobStatus = {
   error?: string;
   result?: AnalysisResult;
 };
+
+export type ChatSource = {
+  page: number | null;
+  snippet: string;
+};
+
+export type ChatTurn = {
+  role: 'user' | 'assistant';
+  content: string;
+};
+
+export type ChatAnswer = {
+  answer: string;
+  sources: ChatSource[];
+  disclaimer: string;
+};
+
+export type ChatMessage = ChatTurn & {
+  sources?: ChatSource[];
+};

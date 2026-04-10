@@ -12,22 +12,50 @@ export default function PdfPreview({ file }: Props) {
 
   if (!file) {
     return (
-      <section className="glass-panel rounded-2xl p-5">
-        <h2 className="panel-title">PDF Preview</h2>
-        <p className="mt-3 text-sm text-slate-600">Upload a document to inspect original pages alongside extracted output.</p>
+      <section className="section-card h-full min-h-[280px] fade-up stagger-3">
+        <div className="section-header">
+          <div className="panel-header-main">
+            <span className="panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <rect x="4" y="3" width="16" height="18" rx="2" />
+                <path d="M8 7h8" />
+                <path d="M8 12h8" />
+                <path d="M8 17h5" />
+              </svg>
+            </span>
+            <h2 className="panel-title">PDF Preview</h2>
+          </div>
+          <span className="badge-soft">Source</span>
+        </div>
+        <p className="panel-subtitle">Upload a document to inspect original pages alongside extracted output.</p>
       </section>
     );
   }
 
   return (
-    <section className="glass-panel fade-in h-[84vh] overflow-y-auto rounded-2xl p-5">
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="panel-title">PDF Preview</h2>
-        <span className="ribbon">{numPages || '?'} Pages</span>
+    <section className="section-card fade-up h-[84vh] overflow-y-auto stagger-3">
+      <div className="section-header">
+        <div className="panel-header-main">
+          <span className="panel-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <rect x="4" y="3" width="16" height="18" rx="2" />
+              <path d="M8 7h8" />
+              <path d="M8 12h8" />
+              <path d="M8 17h5" />
+            </svg>
+          </span>
+          <h2 className="panel-title">PDF Preview</h2>
+        </div>
+        <span className="badge-soft">{numPages || '?'} Pages</span>
       </div>
-      <Document file={file} onLoadSuccess={(doc) => setNumPages(doc.numPages)} loading={<p className="text-sm text-slate-500">Rendering PDF...</p>}>
+
+      <Document
+        file={file}
+        onLoadSuccess={(doc) => setNumPages(doc.numPages)}
+        loading={<p className="text-sm text-slate-500">Rendering document pages...</p>}
+      >
         {Array.from({ length: numPages }, (_, idx) => (
-          <div key={idx + 1} className="mb-4 rounded-xl border border-slate-900/10 bg-white p-2">
+          <div key={idx + 1} className="card-hover-dark spotlight-border mb-4 rounded-xl border border-slate-200 bg-slate-50/70 p-2 shadow-sm">
             <Page pageNumber={idx + 1} width={560} className="mx-auto" />
           </div>
         ))}

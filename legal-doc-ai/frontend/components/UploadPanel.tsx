@@ -13,14 +13,23 @@ export default function UploadPanel({ onSubmit, loading }: Props) {
   }, [file]);
 
   return (
-    <section className="glass-panel fade-in rounded-2xl p-5">
-      <div className="flex items-center justify-between">
-        <h2 className="panel-title">Document Upload</h2>
-        <span className="ribbon">PDF</span>
+    <section className="section-card fade-up">
+      <div className="section-header">
+        <div className="panel-header-main">
+          <span className="panel-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+              <path d="M14 3v5h5" />
+              <path d="m12 11-3 3h2v4h2v-4h2z" />
+            </svg>
+          </span>
+          <h2 className="panel-title">Document Upload</h2>
+        </div>
+        <span className="badge-soft">PDF</span>
       </div>
-      <p className="mt-2 text-sm text-slate-600">Upload a judgment/order PDF to run extraction and summary pipeline.</p>
+      <p className="panel-subtitle">Upload a judgment or order to run extraction, summarization, and recommendations.</p>
 
-      <label className="mt-4 block cursor-pointer rounded-xl border border-emerald-900/20 bg-white/80 p-3 transition hover:border-emerald-700/45">
+      <label className="mt-4 block cursor-pointer rounded-xl border border-slate-300/90 bg-slate-50/70 p-3 transition hover:border-slate-400 focus-within:ring-2 focus-within:ring-slate-500/40">
         <input
           className="hidden"
           type="file"
@@ -28,13 +37,14 @@ export default function UploadPanel({ onSubmit, loading }: Props) {
           onChange={(e) => setFile(e.target.files?.[0] || null)}
         />
         <div className="flex items-center justify-between gap-2 text-sm">
-          <span className="rounded-md bg-emerald-100 px-2 py-1 font-semibold text-emerald-900">Choose File</span>
-          <span className="truncate text-slate-700">{label}</span>
+          <span className="btn-secondary">Select PDF</span>
+          <span className="max-w-[68%] truncate text-slate-700">{label}</span>
         </div>
+        <p className="mt-3 text-xs text-slate-500">Only PDF files are accepted. Your uploaded file is processed for extraction and summarization.</p>
       </label>
 
       <button
-        className="mt-4 w-full rounded-xl bg-emerald-800 px-4 py-3 font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
+        className="btn-primary mt-4 w-full"
         disabled={!file || loading}
         onClick={() => file && onSubmit(file)}
       >

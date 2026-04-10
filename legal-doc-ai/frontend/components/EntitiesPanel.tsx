@@ -15,34 +15,47 @@ const groups: Array<{ key: keyof AnalysisResult['extraction']; title: string }> 
 
 export default function EntitiesPanel({ result, onSelectSpan }: Props) {
   if (!result) {
-    return <section className="glass-panel rounded-2xl p-5 text-sm text-slate-600">Entities will appear here after analysis.</section>;
+    return <section className="section-card text-sm text-slate-600">Entities will appear here after analysis.</section>;
   }
 
   return (
-    <section className="glass-panel fade-in rounded-2xl p-5">
-      <div className="flex items-center justify-between">
-        <h2 className="panel-title">Extracted Entities</h2>
-        <span className="ribbon">Evidence Linked</span>
+    <section className="section-card fade-up">
+      <div className="section-header">
+        <div className="panel-header-main">
+          <span className="panel-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M4 19V5" />
+              <path d="M20 19V5" />
+              <path d="M8 9h8" />
+              <path d="M8 15h8" />
+            </svg>
+          </span>
+          <h2 className="panel-title">Extracted Entities</h2>
+        </div>
+        <span className="badge-soft">Evidence Linked</span>
       </div>
 
       {result.extraction.case_name && (
-        <div className="mt-3 rounded-xl border border-emerald-900/20 bg-emerald-50/70 p-3 text-sm">
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-900">Case Name</p>
-          <p className="mt-1 font-medium text-slate-800">{result.extraction.case_name.value}</p>
+        <div className="card-hover-dark spotlight-border mt-3 rounded-xl border border-slate-300/70 bg-slate-50/70 p-3 text-sm">
+          <p className="card-muted text-xs font-semibold uppercase tracking-wide text-slate-700">Case Name</p>
+          <p className="card-strong mt-1 font-medium text-slate-800">{result.extraction.case_name.value}</p>
         </div>
       )}
 
-      <div className="mt-3 space-y-3">
+      <div className="mt-4 space-y-4">
         {groups.map((group) => {
           const items = result.extraction[group.key] as ExtractedEntity[];
           return (
-            <div key={group.key}>
-              <h3 className="text-sm font-semibold text-slate-700">{group.title}</h3>
-              <div className="mt-1 space-y-2">
+            <article key={group.key} className="card-hover-dark rounded-xl border border-slate-200 bg-white p-3">
+              <div className="mb-2 flex items-center justify-between gap-2">
+                <h3 className="card-strong text-sm font-semibold text-slate-800">{group.title}</h3>
+                <span className="card-muted text-xs font-semibold text-slate-500">{items.length}</span>
+              </div>
+              <div className="space-y-2">
                 {items.map((item, i) => (
                   <button
                     key={`${group.key}-${i}`}
-                    className="block w-full rounded-xl border border-slate-900/10 bg-white/75 p-2.5 text-left text-sm text-slate-700 transition hover:border-emerald-700/40 hover:bg-emerald-50"
+                    className="interactive-row"
                     onClick={() => onSelectSpan(item)}
                   >
                     {item.value}
@@ -50,7 +63,7 @@ export default function EntitiesPanel({ result, onSelectSpan }: Props) {
                 ))}
                 {!items.length && <p className="text-xs text-slate-500">Not detected.</p>}
               </div>
-            </div>
+            </article>
           );
         })}
       </div>

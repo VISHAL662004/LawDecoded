@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { JobStatus } from './types';
+import { ChatAnswer, ChatTurn, JobStatus } from './types';
 
 const api = axios.create({
   baseURL: 'http://localhost:8000/api/v1',
@@ -16,5 +16,17 @@ export async function uploadPdf(file: File): Promise<{ job_id: string }> {
 
 export async function fetchJob(jobId: string): Promise<JobStatus> {
   const res = await api.get(`/analyze/jobs/${jobId}`);
+  return res.data;
+}
+
+export async function sendChatQuestion(
+  jobId: string,
+  question: string,
+  history: ChatTurn[],
+): Promise<ChatAnswer> {
+  const res = await api.post(`/analyze/jobs/${jobId}/chat`, {
+    question,
+    history,
+  });
   return res.data;
 }
