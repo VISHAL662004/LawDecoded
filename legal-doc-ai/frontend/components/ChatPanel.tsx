@@ -71,7 +71,6 @@ export default function ChatPanel({ jobId, result }: Props) {
           </span>
           <h2 className="panel-title">PDF Chat</h2>
         </div>
-        <span className="badge-soft">Groq Q&A</span>
       </div>
 
       <p className="panel-subtitle">

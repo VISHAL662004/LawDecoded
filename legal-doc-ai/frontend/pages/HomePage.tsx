@@ -90,13 +90,13 @@ export default function HomePage() {
               <span className="badge-soft">Enterprise Legal Intelligence</span>
               <h1 className="mt-4 text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">
                 <SplitText
-                  text="Litigation intelligence with precision-grade extraction and narrative clarity."
+                  text="LawDecoded - Legal Document Analyser"
                   delay={70}
                   duration={1}
                 />
               </h1>
               <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
-                Designed for legal teams that need trustworthy output fast: entity extraction, document-grounded summaries, and structured action guidance in one cohesive workspace.
+                Designed for general public that need trustworthy output : entity extraction, document-grounded summaries, and structured action guidance in one cohesive workspace.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">

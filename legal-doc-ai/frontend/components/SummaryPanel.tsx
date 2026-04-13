@@ -23,7 +23,6 @@ export default function SummaryPanel({ result }: Props) {
           </span>
           <h2 className="panel-title">Summary</h2>
         </div>
-        <span className="badge-soft">Reader Friendly</span>
       </div>
 
       <div className="mt-4 space-y-4 text-sm leading-6">
